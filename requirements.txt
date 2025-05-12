@@ -1,2 +1,4 @@
-PyQt5==5.15.9
-selenium==4.10.0 
+fastapi
+uvicorn
+pydantic
+python-multipart
