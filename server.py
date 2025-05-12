@@ -10,7 +10,7 @@ app = FastAPI()
 # Cho phép truy cập từ web client (CORS)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Đổi lại domain khi deploy thật
+    allow_origins=["https://livechat-frontend-self.vercel.app"],  # KHÔNG có dấu /
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
