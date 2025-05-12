@@ -111,5 +111,15 @@ def change_password(req: ChangePasswordRequest, token: str = Depends(oauth2_sche
     save_users(users)
     return {"success": True}
 
+@app.post("/update-platforms")
+async def update_platforms(request: Request, token: str = Depends(oauth2_scheme)):
+    if token != "admin":
+        raise HTTPException(status_code=403, detail="Không có quyền")
+    data = await request.json()
+    with open("platforms.json", "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    return {"success": True}
+
 if __name__ == "__main__":
     uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True) 
+    
